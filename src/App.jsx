@@ -67,7 +67,7 @@ function App() {
         }
       />
       <label>Last Name</label>
-           <input
+      <input
         placeholder='Doe'
         {...register("LastName", {
           required: "This is required.",
@@ -165,6 +165,7 @@ function App() {
       />
       
       <input className="submit-btn" value="Submit" type="submit" />
+
       { error === false ? <p className="message-success">{notification}</p> : <p className="message-error">{notification}</p>}
     </form>
     </>
