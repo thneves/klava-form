@@ -2,18 +2,32 @@ import React from 'react';
 import { useState } from "react"
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { addProfile } from './requests/post';
 import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
-  const [date, setDate] = useState(new Date());
+  const [notication, setNotification] = useState(' ')
   const { register, handleSubmit,  formState: { errors } } = useForm({
     criteriaMode: "all"
   });
-  const onSubmit = data => console.log(data);
-  console.log(errors)
+
+  const onSubmit = data => {
+    const profile = {profile: {
+      first_name: data.FirstName,
+      last_name: data.SecondName,
+      email: data.Email,
+      phone_number: data.Phone,
+      birth_date: data.Birth
+    }}
+
+
+    let message = addProfile(profile)
+    console.log(message);
+  };
+
   return (
     <>
     
