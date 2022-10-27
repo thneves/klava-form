@@ -6,11 +6,12 @@ import { addProfile } from './requests/post';
 import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
 
 function App() {
   const [notification, setNotification] = useState('')
   const [error, setError] = useState(false)
-  const { register, handleSubmit,  formState: { errors } } = useForm({
+  const { register, handleSubmit,  formState: { errors }, reset } = useForm({
     criteriaMode: "all"
   });
 
@@ -30,7 +31,12 @@ function App() {
       setError(true)
       setNotification("Something went wront.")
     })
-  };
+
+    setTimeout(() => {
+      setNotification('')
+      reset();
+    }, 5000);
+  }
 
   return (
     <>
