@@ -66,10 +66,10 @@ function App() {
           ))
         }
       />
-      <label>Second Name</label>
+      <label>Last Name</label>
            <input
         placeholder='Doe'
-        {...register("SecondName", {
+        {...register("LastName", {
           required: "This is required.",
           pattern: {
             value: /^[a-zA-Z]+$/,
@@ -83,7 +83,7 @@ function App() {
       />
       <ErrorMessage
         errors={errors}
-        name="SecondName"
+        name="LastName"
         render={({ messages }) =>
           messages &&
           Object.entries(messages).map(([type, message]) => (
