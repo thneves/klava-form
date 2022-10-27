@@ -6,7 +6,6 @@ import { addProfile } from './requests/post';
 import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect } from 'react';
 
 function App() {
   const [notification, setNotification] = useState('')
@@ -165,7 +164,7 @@ function App() {
         }
       />
       
-      <input value="Submit" type="submit" />
+      <input className="submit-btn" value="Submit" type="submit" />
       { error === false ? <p className="message-success">{notification}</p> : <p className="message-error">{notification}</p>}
     </form>
     </>

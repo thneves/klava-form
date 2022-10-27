@@ -27,6 +27,12 @@ input {
   border-radius: 6px;
 }
 
+label {
+  margin-top: 8px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
 p {
   margin: -30px 0;
   color: A12568;
@@ -44,4 +50,9 @@ p {
 
 .date {
   align-self: left;
+}
+
+.submit-btn {
+  width: 50%;
+  margin: 20px auto 0 auto;
 }
