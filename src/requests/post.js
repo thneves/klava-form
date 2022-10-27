@@ -10,9 +10,9 @@ export const addProfile = async (data) => {
       }
     }
   );
-
-  if (response.status === 200 ) {
-    return "Profile added to Klaviyo list"
+  
+  if (response.status == 200) {
+    return response.status
   }
 
   throw Error(response.status)

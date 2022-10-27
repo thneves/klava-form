@@ -32,9 +32,14 @@ p {
   color: A12568;
 }
 
-p::before {
-  display: inline;
-  content: "⚠ ";
+.message-success {
+  color: green;
+  font-size: 22px;
+}
+
+.message-error {
+  color: red;
+  font-size: 22px;
 }
 
 .date {

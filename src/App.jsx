@@ -7,15 +7,15 @@ import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
-  const [notication, setNotification] = useState(' ')
+  const [notification, setNotification] = useState('')
+  const [error, setError] = useState(false)
   const { register, handleSubmit,  formState: { errors } } = useForm({
     criteriaMode: "all"
   });
 
   const onSubmit = data => {
-    const profile = {profile: {
+    const profile = { profile: {
       first_name: data.FirstName,
       last_name: data.SecondName,
       email: data.Email,
@@ -23,18 +23,22 @@ function App() {
       birth_date: data.Birth
     }}
 
-
-    let message = addProfile(profile)
-    console.log(message);
+    addProfile(profile).then(() => {
+      setError(false)
+      setNotification("Profile added to Klavyio list.")
+    }).catch(() => {
+      setError(true)
+      setNotification("Something went wront.")
+    })
   };
 
   return (
     <>
-    
       <h1 className="title">Add Profile</h1>
       <form className='form' onSubmit={handleSubmit(onSubmit)}>
+      <label>First Name</label>
       <input
-        placeholder='First Name'
+        placeholder='John'
         {...register("FirstName", {
           required: "This is required.",
           pattern: {
@@ -57,8 +61,9 @@ function App() {
           ))
         }
       />
+      <label>Second Name</label>
            <input
-        placeholder='Second Name'
+        placeholder='Doe'
         {...register("SecondName", {
           required: "This is required.",
           pattern: {
@@ -82,8 +87,9 @@ function App() {
         }
       />
 
+      <label>Email</label>
       <input
-        placeholder='Email Address'
+        placeholder='john@example.com'
         {...register("Email", {
           required: "This is required.",
           pattern: {
@@ -103,8 +109,9 @@ function App() {
         }
       />
 
-           <input
-        placeholder='Phone Number'
+      <label>Phone Number</label>
+      <input
+        placeholder='999999999'
         {...register("Phone", {
           required: "This is required.",
           pattern: {
@@ -116,7 +123,7 @@ function App() {
             message: "Number is too short."
           },
           maxLength: {
-            value: 12,
+            value: 14,
             message: "Number is too long."
           }
         })}
@@ -132,7 +139,8 @@ function App() {
         }
       />
 
-        <input
+      <label>Date of Birth</label>
+      <input
         className='date'
         type="date"
         placeholder='Date of Birth'
@@ -152,7 +160,7 @@ function App() {
       />
       
       <input value="Submit" type="submit" />
-
+      { error === false ? <p className="message-success">{notification}</p> : <p className="message-error">{notification}</p>}
     </form>
     </>
   )
