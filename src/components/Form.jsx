@@ -1,10 +1,13 @@
 import "../styles/global.css";
-import { useState } from "react";
+import { React, useState } from "react";
 import { useForm } from "react-hook-form";
-import { addProfile } from "../requests/post";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { FlashError, FlashSuccess } from "./FlashMessages";
+import { addProfile } from "../requests/post";
 
 export function Form() {
+  const [date, setDate] = useState(new Date());
   const [error, setError] = useState(false);
   const [notification, setNotification] = useState("invisible");
   const {
@@ -120,10 +123,10 @@ export function Form() {
         />
         <p className="text-red-400 italic">{errors.Phone?.message}</p>
 
-        <input
-          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
-          type="date"
-          placeholder="Date of Birth"
+        <DatePicker
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1 pr-14"
+          onChange={(date) => setDate(date)}
+          placeholderText="Date of birth, click to select..."
           {...register("Birth", {
             required: "This is required.",
           })}
