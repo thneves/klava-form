@@ -37,7 +37,7 @@ export function Form() {
     return (
       <div className="w-screen h-screen bg-dark-700 pt-20">
         <form
-          className='flex flex-col mx-auto max-w-md bg-gray-900  py-8 px-12 rounded-md shadow-gray-300 shadow-sm'
+          className='flex flex-col mx-auto max-w-md bg-gray-900  py-8 px-12 rounded-md mix-blend-difference shadow-normal'
           onSubmit={handleSubmit(onSubmit)}
         >
         <h1
@@ -67,7 +67,7 @@ export function Form() {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p
-                className="text-red-400"
+                className="text-red-400 italic"
                 key={type}>{message}
               </p>
             ))
@@ -95,7 +95,7 @@ export function Form() {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p
-                className="text-red-400"
+                className="text-red-400 italic"
                 key={type}>{message}
               </p>
             ))
@@ -120,7 +120,7 @@ export function Form() {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p
-                className="text-red-400"
+                className="text-red-400 italic"
                 key={type}>{message}
               </p>
             ))
@@ -152,7 +152,7 @@ export function Form() {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p
-                className="text-red-400"
+                className="text-red-400 italic"
                 key={type}>{message}
               </p>
             ))
@@ -174,7 +174,7 @@ export function Form() {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p
-                className="text-red-400"
+                className="text-red-400 italic"
                 key={type}>{message}
               </p>
             ))

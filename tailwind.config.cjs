@@ -9,12 +9,15 @@ module.exports = {
         sans: 'Poppins, sans-serif'
       }
     },
+    boxShadow: {
+      'normal': '0px 0px 16px 2px rgba(225,225,230,1)',
+    },
 
     colors: {
       red: {
-        400: '#780000'
+        400: '#a41623'
       },
-      
+
       gray: {
         100: '#E1E1E6',
         300: '#8D8D99',
