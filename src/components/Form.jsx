@@ -20,7 +20,7 @@ export function Form() {
     const profile = {
       profile: {
         first_name: data.FirstName,
-        last_name: data.SecondName,
+        last_name: data.LastName,
         email: data.Email,
         phone_number: data.Phone,
         birth_date: data.Birth,
@@ -38,8 +38,8 @@ export function Form() {
       });
 
     setTimeout(() => {
-      setNotification("invisible");
       reset();
+      setNotification("invisible");
     }, 5000);
   };
 
