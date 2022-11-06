@@ -1,7 +1,6 @@
 import "../styles/global.css"
 import { useState } from "react"
 import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
 import { addProfile } from '../requests/post';
 
 export function Form() {
@@ -61,19 +60,8 @@ export function Form() {
             }
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="FirstName"
-          render={({ messages }) =>
-            messages &&
-            Object.entries(messages).map(([type, message]) => (
-              <p
-                className="text-red-400 italic"
-                key={type}>{message}
-              </p>
-            ))
-          }
-        />
+        <p className="text-red-400 italic">{errors.FirstName?.message}</p>
+
         <input
           className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
           placeholder='Last Name'
@@ -89,19 +77,7 @@ export function Form() {
             }
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="LastName"
-          render={({ messages }) =>
-            messages &&
-            Object.entries(messages).map(([type, message]) => (
-              <p
-                className="text-red-400 italic"
-                key={type}>{message}
-              </p>
-            ))
-          }
-        />
+        <p className="text-red-400 italic">{errors.FirstName?.message}</p>
   
         <input
           className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
@@ -114,19 +90,8 @@ export function Form() {
             }
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="Email"
-          render={({ messages }) =>
-            messages &&
-            Object.entries(messages).map(([type, message]) => (
-              <p
-                className="text-red-400 italic"
-                key={type}>{message}
-              </p>
-            ))
-          }
-        />
+        <p className="text-red-400 italic">{errors.FirstName?.message}</p>
+
         <input
           className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
           placeholder='Phone'
@@ -146,19 +111,7 @@ export function Form() {
             }
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="Phone"
-          render={({ messages }) =>
-            messages &&
-            Object.entries(messages).map(([type, message]) => (
-              <p
-                className="text-red-400 italic"
-                key={type}>{message}
-              </p>
-            ))
-          }
-        />
+        <p className="text-red-400 italic">{errors.FirstName?.message}</p>
   
         <input
           className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
@@ -168,19 +121,7 @@ export function Form() {
             required: "This is required.",
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="Birth"
-          render={({ messages }) =>
-            messages &&
-            Object.entries(messages).map(([type, message]) => (
-              <p
-                className="text-red-400 italic"
-                key={type}>{message}
-              </p>
-            ))
-          }
-        />
+        <p className="text-red-400 italic">{errors.FirstName?.message}</p>
 
         <input 
           className="mt-8 px-6 py-4 rounded font-bold text-gray-900 text-sm uppercase bg-gray-100  shadow-sm shadow-blue-400 hover:bg-gray-300 hover:cursor-pointer"
