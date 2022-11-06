@@ -1,3 +1,4 @@
+import "../styles/global.css"
 import { useState } from "react"
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
@@ -26,20 +27,27 @@ export function Form() {
         setError(true)
         setNotification("Something went wront.")
       })
-  
+
       setTimeout(() => {
         setNotification('')
         reset();
       }, 5000);
     }
-  
+
     return (
-      <>
-        <h1 className="title">Add Profile</h1>
-        <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <label>First Name</label>
+      <div className="w-screen h-screen bg-dark-700 pt-20">
+        <form
+          className='flex flex-col mx-auto max-w-md bg-gray-900  py-8 px-12 rounded-md shadow-gray-300 shadow-sm'
+          onSubmit={handleSubmit(onSubmit)}
+        >
+        <h1
+          className="text-center text-gray-100 text-4xl font-bold mb-5 mt-"
+          >
+          Add Profile
+        </h1>
         <input
-          placeholder='John'
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
+          placeholder='First Name'
           {...register("FirstName", {
             required: "This is required.",
             pattern: {
@@ -58,13 +66,16 @@ export function Form() {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p key={type}>{message}</p>
+              <p
+                className="text-red-400"
+                key={type}>{message}
+              </p>
             ))
           }
         />
-        <label>Last Name</label>
         <input
-          placeholder='Doe'
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
+          placeholder='Last Name'
           {...register("LastName", {
             required: "This is required.",
             pattern: {
@@ -83,14 +94,17 @@ export function Form() {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p key={type}>{message}</p>
+              <p
+                className="text-red-400"
+                key={type}>{message}
+              </p>
             ))
           }
         />
   
-        <label>Email</label>
         <input
-          placeholder='john@example.com'
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
+          placeholder='Email'
           {...register("Email", {
             required: "This is required.",
             pattern: {
@@ -105,14 +119,16 @@ export function Form() {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p key={type}>{message}</p>
+              <p
+                className="text-red-400"
+                key={type}>{message}
+              </p>
             ))
           }
         />
-  
-        <label>Phone Number</label>
         <input
-          placeholder='999999999'
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
+          placeholder='Phone'
           {...register("Phone", {
             required: "This is required.",
             pattern: {
@@ -135,14 +151,16 @@ export function Form() {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p key={type}>{message}</p>
+              <p
+                className="text-red-400"
+                key={type}>{message}
+              </p>
             ))
           }
         />
   
-        <label>Date of Birth</label>
         <input
-          className='date'
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
           type="date"
           placeholder='Date of Birth'
           {...register("Birth", {
@@ -155,16 +173,23 @@ export function Form() {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p key={type}>{message}</p>
+              <p
+                className="text-red-400"
+                key={type}>{message}
+              </p>
             ))
           }
         />
-        
-        <input className="submit-btn" value="Submit" type="submit" />
+
+        <input 
+          className="mt-8 px-6 py-4 rounded font-bold text-gray-900 text-sm uppercase bg-gray-100  shadow-sm shadow-blue-400 hover:bg-gray-300 hover:cursor-pointer"
+          value="Submit Profile"
+          type="submit"
+        />
   
         { error === false ? <p className="message-success">{notification}</p> : <p className="message-error">{notification}</p>}
       </form>
-      </>
+      </div>
     )
   }
   
