@@ -35,9 +35,10 @@ export function Form() {
     }
 
     return (
-      <div className="w-screen h-screen bg-dark-700 pt-20">
+      <div className="w-screen h-screen bg-dark-700 pt-4">
+
         <form
-          className='flex flex-col mx-auto max-w-md bg-gray-900  py-8 px-12 rounded-md mix-blend-difference shadow-normal'
+          className='flex flex-col mx-auto max-w-md bg-gray-900  mt-3 py-8 px-12 rounded-md  shadow-normal'
           onSubmit={handleSubmit(onSubmit)}
         >
         <h1
@@ -46,7 +47,7 @@ export function Form() {
           Add Profile
         </h1>
         <input
-          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1 focus:border-gray-100 focus:border-none"
           placeholder='First Name'
           {...register("FirstName", {
             required: "This is required.",
