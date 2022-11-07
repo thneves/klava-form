@@ -1,14 +1,11 @@
 import "../styles/global.css";
 import { React, useState } from "react";
 import { useForm } from "react-hook-form";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { FlashError, FlashSuccess } from "./FlashMessages";
-import { addProfile } from "../requests/post";
+import { api } from "../requests/post";
 
 export function Form() {
-  const [date, setDate] = useState(new Date());
-  const [error, setError] = useState(false);
+  const [apiError, setApiError] = useState("");
   const [notification, setNotification] = useState("invisible");
   const {
     register,
@@ -19,29 +16,29 @@ export function Form() {
     criteriaMode: "all",
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const profile = {
-      profile: {
-        first_name: data.FirstName,
-        last_name: data.LastName,
-        email: data.Email,
-        phone_number: data.Phone,
-        birth_date: data.Birth,
-      },
+      first_name: data.FirstName,
+      last_name: data.LastName,
+      email: data.Email,
+      phone_number: data.Phone,
+      birth_date: data.Birth,
     };
 
-    addProfile(profile)
-      .then(() => {
-        setError(false);
-        setNotification("visible");
-      })
-      .catch(() => {
-        setError(true);
-        setNotification("visible");
+    try {
+      await api.post("/profiles", {
+        profile,
       });
+
+      setNotification("visible");
+    } catch (error) {
+      setApiError(error.response.data.message);
+      setNotification("visible");
+    }
 
     setTimeout(() => {
       reset();
+      setApiError("");
       setNotification("invisible");
     }, 5000);
   };
@@ -95,7 +92,7 @@ export function Form() {
           {...register("Email", {
             required: "This is required.",
             pattern: {
-              value: /^\S+@\S+$/i,
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
               message: "Must be a valid email.",
             },
           })}
@@ -123,10 +120,10 @@ export function Form() {
         />
         <p className="text-red-400 italic">{errors.Phone?.message}</p>
 
-        <DatePicker
-          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1 pr-14"
-          onChange={(date) => setDate(date)}
-          placeholderText="Date of birth, click to select..."
+        <input
+          className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100 mt-4 mb-1"
+          type="date"
+          placeholder="Date of Birth"
           {...register("Birth", {
             required: "This is required.",
           })}
@@ -140,7 +137,7 @@ export function Form() {
         />
       </form>
       <div className={notification}>
-        {error ? <FlashError /> : <FlashSuccess />}
+        {apiError ? <FlashError error={apiError} /> : <FlashSuccess />}
       </div>
     </div>
   );
