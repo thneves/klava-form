@@ -1,8 +1,7 @@
 import axios from "axios";
-import { config } from "../utils/constants";
 
 export const api = axios.create({
-  baseURL: config.API_URL,
+  baseURL: "https://klava-server.herokuapp.com/api/v1",
   headers: {
     'Content-Type': 'application/json'
   }
